@@ -1,0 +1,55 @@
+﻿<Window x:Class="StudentInfoSystem1.StudentDataOutput"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentInfoSystem1"
+        Closing="Window_Closing"
+        mc:Ignorable="d"
+        Title="StudentDataOutput" Height="502" Width="800">
+    <Window.DataContext>
+        <local:StudentDataOutputVM/>
+    </Window.DataContext>
+    <Grid Height="460">
+        <Label x:Name="lblFName" Content="First:" HorizontalAlignment="Left" Margin="60,60,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
+        <Label x:Name="lblMName" Content="Middle:" HorizontalAlignment="Left" Margin="60,90,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
+        <Label x:Name="lblLName" Content="Last:" HorizontalAlignment="Left" Margin="60,120,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
+        <TextBox x:Name="txtFirstName" Text="{Binding Student.FirstName}" IsEnabled="{Binding FormEnabled}" HorizontalAlignment="Left" Margin="150,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" FontSize="13" TextChanged="txtFirstName_TextChanged"/>
+        <TextBox x:Name="txtMiddleName" Text="{Binding Student.MiddleName}" IsEnabled="{Binding FormEnabled}" HorizontalAlignment="Left" Margin="150,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" FontSize="13"/>
+        <TextBox x:Name="txtLastName" Text="{Binding Student.LastName}" IsEnabled="{Binding FormEnabled}" HorizontalAlignment="Left" Margin="150,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" FontSize="13"/>
+        <GroupBox x:Name="grbPersonalData" Header="Personal Data" Margin="45,25,25,267" FontSize="13" FontStyle="Italic"/>
+        <Label x:Name="lblFac" Content="Faculty:" HorizontalAlignment="Left" Margin="60,0,0,0" VerticalAlignment="Center" FontSize="13" FontWeight="Bold"/>
+        <Label x:Name="lblSpec" Content="Specialty:" HorizontalAlignment="Left" Margin="60,235,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
+        <Label x:Name="lblProgram" Content="Program:" HorizontalAlignment="Left" Margin="60,265,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
+        <Label x:Name="lblStatus" Content="Status:" HorizontalAlignment="Left" Margin="60,295,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
+        <Label x:Name="lblFakNomer" Content="Fak.nomer:" HorizontalAlignment="Left" Margin="60,325,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
+        <TextBox x:Name="txtFac" Text="{Binding Student.Faculty}" IsEnabled="{Binding FormEnabled}" HorizontalAlignment="Left" Margin="150,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" FontSize="13" Height="26"/>
+        <TextBox x:Name="txtSpec"  Text="{Binding Student.Specialty}" IsEnabled="{Binding FormEnabled}" HorizontalAlignment="Left" Margin="150,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" FontSize="13" Height="26"/>
+        <TextBox x:Name="txtProg" Text="{Binding Student.ProgrammType}" IsEnabled="{Binding FormEnabled}"  HorizontalAlignment="Left" Margin="150,267,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" FontSize="13" Height="26"/>
+        <TextBox x:Name="txtStat" Text="{Binding Student.Status, Mode=OneWay}" IsEnabled="{Binding FormEnabled}" HorizontalAlignment="Left" Margin="150,298,0,0" VerticalAlignment="Top" Width="298"  Height="26"/>
+        <TextBox x:Name="txtFakN"  Text="{Binding Student.FakNomer}" IsEnabled="{Binding FormEnabled}" HorizontalAlignment="Left" Margin="150,329,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" FontSize="13" Height="26"/>
+        <Label x:Name="lblYear" Content="Year:" HorizontalAlignment="Left" Margin="515,0,0,30" VerticalAlignment="Center"  FontSize="13" FontWeight="Bold"/>
+        <Label x:Name="lblPotok" Content="Potok:" HorizontalAlignment="Left" Margin="515,235,0,0" VerticalAlignment="Top"  FontSize="13" FontWeight="Bold"/>
+        <Label x:Name="lblGroup" Content="Group:" HorizontalAlignment="Left" Margin="515,265,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold"/>
+        <TextBox x:Name="txtYear"  Text="{Binding Student.Year}" IsEnabled="{Binding FormEnabled}"  HorizontalAlignment="Left" Margin="580,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" Height="25" FontSize="13"/>
+        <TextBox x:Name="txtPotok"  Text="{Binding Student.Potok}" IsEnabled="{Binding FormEnabled}" HorizontalAlignment="Left" Margin="580,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" Height="25" FontSize="13"/>
+        <TextBox x:Name="txtGroup"  Text="{Binding Student.GroupId}" IsEnabled="{Binding FormEnabled}" HorizontalAlignment="Left" Margin="580,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" Height="25" FontSize="13"/>
+        <GroupBox x:Name="gbStudData" Header="Student Data" Margin="45,190,25,61" FontSize="13" FontWeight="Normal" FontStyle="Italic"/>
+        <Button x:Name="btnDel" Content="Delete" Command="{Binding ClearCommand, Mode=OneWay}" HorizontalAlignment="Left" Margin="150,405,0,0" VerticalAlignment="Top"  FontWeight="Bold" Height="30" Width="60">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="btnShow" Content="Show"  HorizontalAlignment="Left" Margin="230,405,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.994,-0.161" Height="30" Width="60" FontWeight="Bold" Click="btnShow_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="btnDeactivate" Content="Lock/Unlock" Command="{Binding DisableCommand}" HorizontalAlignment="Left" Margin="310,405,0,0" VerticalAlignment="Top" Height="30" Width="80" FontWeight="Bold">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+
+    </Grid>
+</Window>

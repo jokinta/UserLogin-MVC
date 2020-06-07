@@ -1,0 +1,106 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentInfoSystem1"
+        xmlns:UserLogin1="clr-namespace:UserLogin1;assembly=UserLogin1" x:Class="StudentInfoSystem1.SignInForm"
+        mc:Ignorable="d"
+        Title="SignUpForm" Height="430" Width="300">
+ 
+    <Border Background="Beige" >
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,0,0,0">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type PasswordBox}">
+                    <Setter Property="Margin" Value="0,11,0,0"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="Background" Value="Azure"/>
+                </Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="0,5,0,0"/>
+                    <Setter Property="Width" Value="100"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Grid x:Name="grid">
+                                    <Border x:Name="border" CornerRadius="0" BorderBrush="Gray" BorderThickness="1">
+                                        <Border.Background>
+                                            <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                                <RadialGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterX="0.5" CenterY="0.5" 
+                                                        ScaleX="1.5" ScaleY="1.5"/>
+                                                        <TranslateTransform X="0.02" Y="0.3"/>
+                                                    </TransformGroup>
+                                                </RadialGradientBrush.RelativeTransform>
+                                                <GradientStop Offset="1" Color="LightBlue"/>
+                                                <GradientStop Offset="0.3" Color="#FFFFFFFF"/>
+                                            </RadialGradientBrush>
+                                        </Border.Background>
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          TextElement.FontWeight="Bold">
+                                        </ContentPresenter>
+                                    </Border>
+
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter Property="Background" TargetName="border">
+                                            <Setter.Value>
+                                                <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                                    <RadialGradientBrush.RelativeTransform>
+                                                        <TransformGroup>
+                                                            <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.5" ScaleY="1.5"/>
+                                                            <TranslateTransform X="0.02" Y="0.3"/>
+                                                        </TransformGroup>
+                                                    </RadialGradientBrush.RelativeTransform>
+                                                    <GradientStop Color="#00000000" Offset="1"/>
+                                                    <GradientStop Color="IndianRed" Offset="0.3"/>
+                                                </RadialGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="BorderBrush" TargetName="border" Value="#8B0000"/>
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                                    </Trigger>
+
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+                <Style TargetType="{x:Type Label}">
+                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Style>
+            </StackPanel.Resources>
+            <StackPanel Background="LightBlue">
+                <Label x:Name="lblHeader" Content="Регистрация"  Width="150"  FontWeight="Bold"  />
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Stretch" Width="200">
+            <Label x:Name="lblUsrName"   Content="Потребителско име:"  />
+                <TextBox x:Name="txtUsername" FontSize="15" Background="Azure" TextChanged="txtUsername_TextChanged" AutomationProperties.IsRequiredForForm="True"/>
+
+                <Label x:Name="lblPassword"  Content="Парола:" />
+                <PasswordBox x:Name="pwdBox"  AutomationProperties.IsRequiredForForm="True"/>
+                <PasswordBox x:Name="pwdRepeatBox" AutomationProperties.IsRequiredForForm="True"/>
+
+                <Label x:Name="lblFaknomer"  Content="Ф. Номер:"/>
+                <TextBox x:Name="txtFaknomer" FontSize="15" Background="Azure" TextChanged="txtUsername_TextChanged" AutomationProperties.IsRequiredForForm="True"/>
+
+                <Label x:Name="lblRole" Content="Роля:"/>
+            <ComboBox x:Name="cmbRoleList" FontSize="13"  BorderThickness="2"  Background="Transparent" Foreground="Black" IsEditable="True"/>
+            <Button x:Name="lblSubmit" Content="Продължи" FontSize="16" Click="lblSubmit_Click" >
+             
+                </Button>
+                <Button x:Name="lblCancel" Content="Отказ" FontSize="16" Click="lblCancel_Click" >
+       
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</Window>
